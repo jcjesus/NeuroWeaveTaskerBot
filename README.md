@@ -573,7 +573,10 @@ launchctl start com.neuroweave.tasker
 
 #### ⊞ Windows
 
-##### Opção 1: Docker Desktop
+##### Opção 1: Docker Desktop ⚠️
+
+> ⚠️ **Aviso de Performance**: Esta opção consome mais recursos do sistema e tem performance computacional reduzida em comparação com a Opção 2 (WSL2). Recomendada apenas se você precisar da interface gráfica do Docker Desktop.
+
 1. **Instalar Docker Desktop**
 ```bash
 # Download Docker Desktop do site oficial
