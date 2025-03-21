@@ -630,21 +630,18 @@ docker run -d ^
 
 2. **Instalar WSL2**
 ```bash
-# Habilitar WSL e Virtual Machine Platform
+# Habilitar recursos necessários (PowerShell como Administrador)
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
-```
-```bash
-# Habilitar Virtual Machine Platform
 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
-```
-```bash
-# Baixar e instalar o Kernel do Linux para WSL2
-# Download: https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi
-```
-```bash
+
+# Reiniciar o computador
+
 # Definir WSL2 como versão padrão
 wsl --set-default-version 2
 ```
+
+# Download do Pacote de Atualização do WSL2:
+[📥 Clique aqui para baixar o pacote de atualização do WSL2](https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi)
 
 3. **Instalar Ubuntu no WSL2**
 ```bash
@@ -683,6 +680,10 @@ sudo apt install -y docker-ce docker-ce-cli containerd.io
 ```bash
 # Adicionar usuário ao grupo docker
 sudo usermod -aG docker $USER
+```
+```bash
+# Verificar instalação
+docker --version
 ```
 
 5. **Configurar Inicialização Automática**
