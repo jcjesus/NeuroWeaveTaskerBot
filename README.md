@@ -13,11 +13,75 @@ Bot de automação web inteligente desenvolvido para executar tarefas programada
 ## 🚀 Guia de Instalação e Configuração
 
 ### 📋 Pré-requisitos do Sistema
+
+#### Windows
 - 🐍 Python 3.8+ ([Download Python](https://www.python.org/downloads/))
-- 📦 pip (gerenciador de pacotes Python)
-- 🌐 Git ([Download Git](https://git-scm.com/downloads))
-- 🔧 Visual Studio Code ou PyCharm (recomendado)
-- 🌐 Conexão com internet
+  ```bash
+  # Verificar versão do Python
+  python --version
+  ```
+- 📦 pip (incluído na instalação do Python)
+  - Durante a instalação do Python, marque a opção "Add Python to PATH"
+  - Marque também "Install pip"
+- 🌐 Git ([Download Git](https://git-scm.com/download/win))
+  ```bash
+  # Verificar versão do Git
+  git --version
+  ```
+- 🔧 Visual Studio Code ([Download VSCode](https://code.visualstudio.com/download)) ou PyCharm
+- 📦 Microsoft Visual C++ Build Tools ([Download](https://visualstudio.microsoft.com/visual-cpp-build-tools/))
+
+#### Linux (Ubuntu/Debian)
+```bash
+# Atualizar repositórios
+sudo apt update
+
+# Instalar Python
+sudo apt install python3.8 python3.8-venv python3-pip
+
+# Instalar Git
+sudo apt install git
+
+# Instalar dependências para o Playwright
+sudo apt install -y \
+    libwoff1 \
+    libopus0 \
+    libwebp6 \
+    libwebpdemux2 \
+    libenchant1c2a \
+    libgudev-1.0-0 \
+    libsecret-1-0 \
+    libhyphen0 \
+    libgdk-pixbuf2.0-0 \
+    libegl1 \
+    libnotify4 \
+    libxslt1.1 \
+    libevent-2.1-7 \
+    libgles2 \
+    libvpx6
+
+# Verificar instalações
+python3 --version
+pip3 --version
+git --version
+```
+
+#### MacOS
+```bash
+# Instalar Homebrew (se não estiver instalado)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Instalar Python
+brew install python@3.8
+
+# Instalar Git
+brew install git
+
+# Verificar instalações
+python3 --version
+pip3 --version
+git --version
+```
 
 ### ⚙️ Configuração do Ambiente
 
@@ -63,11 +127,36 @@ python -m pip install --upgrade pip
 pip install -r requirements.txt
 
 # Instalar navegadores para o Playwright
-## Windows/Linux/MacOS
+## Windows
 playwright install
+playwright install-deps
+
+## Linux
+playwright install
+sudo playwright install-deps
+
+## MacOS
+playwright install
+playwright install-deps
 ```
 
-4. **Configure as Variáveis de Ambiente**
+4. **Configuração do Editor (Recomendado)**
+
+#### Visual Studio Code
+- Instale as extensões recomendadas:
+  - Python (Microsoft)
+  - Pylance
+  - Python Test Explorer
+  - Python Debugger
+  - autoDocstring
+
+#### PyCharm
+- Abra o projeto
+- Configure o interpretador Python:
+  1. File > Settings > Project > Python Interpreter
+  2. Adicione o interpretador do ambiente virtual (.venv)
+
+5. **Configure as Variáveis de Ambiente**
 ```bash
 # Windows (CMD)
 copy .env.example .env
