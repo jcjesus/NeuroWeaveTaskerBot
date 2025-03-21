@@ -837,4 +837,51 @@ docker run -d \
 ```
 
 #### 🛠️ Comandos Docker Úteis (Todos os SOs)
-```
+```bash
+# Listar containers em execução
+docker ps
+
+# Listar todos os containers (incluindo parados)
+docker ps -a
+
+# Parar container
+docker stop neuroweave
+
+# Iniciar container
+docker start neuroweave
+
+# Ver logs do container
+docker logs neuroweave
+
+# Ver logs em tempo real
+docker logs -f neuroweave
+
+# Remover container
+docker rm neuroweave
+
+# Listar imagens
+docker images
+
+# Remover imagem
+docker rmi neuroweave
+
+# Verificar uso de recursos
+docker stats
+
+# Executar comando dentro do container
+docker exec -it neuroweave bash
+
+# Atualizar container com nova imagem
+docker pull neuroweave:latest
+docker stop neuroweave
+docker rm neuroweave
+docker run -d --name neuroweave -v $(pwd)/config:/app/config -v $(pwd)/logs:/app/logs neuroweave
+
+# Limpar recursos não utilizados
+docker system prune -a  # Remove containers parados, redes não utilizadas, imagens e cache
+
+# Verificar informações do sistema Docker
+docker info
+
+# Verificar versão do Docker
+docker version
