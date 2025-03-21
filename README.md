@@ -14,7 +14,7 @@ Bot de automação web inteligente desenvolvido para executar tarefas programada
 
 ### 📋 Pré-requisitos do Sistema
 
-#### 🎨 Windows
+#### ⊞ Windows
 - 🐍 Python 3.8+ ([Download Python](https://www.python.org/downloads/))
   ```bash
   # Verificar versão do Python
@@ -108,14 +108,14 @@ git --version
 
 1. **Clone o Repositório**
 ```bash
-# 🎨 Windows / 🐧 Linux / 🍎 MacOS (HTTPS)
+# ⊞ Windows / 🐧 Linux / 🍎 MacOS (HTTPS)
 git clone https://github.com/jcjesus/NeuroWeaveTaskerBot.git
 
-# 🎨 Windows / 🐧 Linux / 🍎 MacOS (SSH)
+# ⊞ Windows / 🐧 Linux / 🍎 MacOS (SSH)
 git clone git@github.com:jcjesus/NeuroWeaveTaskerBot.git
 
 # Entrar no diretório
-## 🎨 Windows (CMD/PowerShell)
+## ⊞ Windows (CMD/PowerShell)
 cd NeuroWeaveTaskerBot
 
 ## 🐧 Linux / 🍎 MacOS
@@ -124,11 +124,11 @@ cd NeuroWeaveTaskerBot
 
 2. **Configure o Ambiente Virtual**
 ```bash
-# 🎨 Windows (CMD)
+# ⊞ Windows (CMD)
 python -m venv .venv
 .venv\Scripts\activate.bat
 
-# 🎨 Windows (PowerShell)
+# ⊞ Windows (PowerShell)
 python -m venv .venv
 .venv\Scripts\Activate.ps1
 
@@ -143,12 +143,12 @@ source .venv/bin/activate
 
 3. **Instale as Dependências**
 ```bash
-# 🎨 Windows / 🐧 Linux / 🍎 MacOS
+# ⊞ Windows / 🐧 Linux / 🍎 MacOS
 python -m pip install --upgrade pip
 pip install -r requirements.txt
 
 # Instalar navegadores para o Playwright
-## 🎨 Windows
+## ⊞ Windows
 playwright install
 playwright install-deps
 
