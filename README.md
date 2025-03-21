@@ -14,7 +14,7 @@ Bot de automação web inteligente desenvolvido para executar tarefas programada
 
 ### 📋 Pré-requisitos do Sistema
 
-#### Windows
+#### 🪟 Windows
 - 🐍 Python 3.8+ ([Download Python](https://www.python.org/downloads/))
   ```bash
   # Verificar versão do Python
@@ -31,7 +31,7 @@ Bot de automação web inteligente desenvolvido para executar tarefas programada
 - 🔧 Visual Studio Code ([Download VSCode](https://code.visualstudio.com/download)) ou PyCharm
 - 📦 Microsoft Visual C++ Build Tools ([Download](https://visualstudio.microsoft.com/visual-cpp-build-tools/))
 
-#### Linux (Ubuntu/Debian)
+#### 🐧 Linux (Ubuntu/Debian)
 1. **Atualizar Repositórios**
 ```bash
 sudo apt update
@@ -77,7 +77,7 @@ pip3 --version
 git --version
 ```
 
-#### MacOS
+#### 🍎 MacOS
 1. **Instalar Homebrew**
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -108,55 +108,55 @@ git --version
 
 1. **Clone o Repositório**
 ```bash
-# Via HTTPS
+# 🪟 Windows / 🐧 Linux / 🍎 MacOS (HTTPS)
 git clone https://github.com/jcjesus/NeuroWeaveTaskerBot.git
 
-# Via SSH
+# 🪟 Windows / 🐧 Linux / 🍎 MacOS (SSH)
 git clone git@github.com:jcjesus/NeuroWeaveTaskerBot.git
 
 # Entrar no diretório
-## Windows (CMD/PowerShell)
+## 🪟 Windows (CMD/PowerShell)
 cd NeuroWeaveTaskerBot
 
-## Linux/MacOS
+## 🐧 Linux / 🍎 MacOS
 cd NeuroWeaveTaskerBot
 ```
 
 2. **Configure o Ambiente Virtual**
 ```bash
-# Windows (CMD)
+# 🪟 Windows (CMD)
 python -m venv .venv
 .venv\Scripts\activate.bat
 
-# Windows (PowerShell)
+# 🪟 Windows (PowerShell)
 python -m venv .venv
 .venv\Scripts\Activate.ps1
 
-# Linux
+# 🐧 Linux
 python3 -m venv .venv
 source .venv/bin/activate
 
-# MacOS
+# 🍎 MacOS
 python3 -m venv .venv
 source .venv/bin/activate
 ```
 
 3. **Instale as Dependências**
 ```bash
-# Windows/Linux/MacOS
+# 🪟 Windows / 🐧 Linux / 🍎 MacOS
 python -m pip install --upgrade pip
 pip install -r requirements.txt
 
 # Instalar navegadores para o Playwright
-## Windows
+## 🪟 Windows
 playwright install
 playwright install-deps
 
-## Linux
+## 🐧 Linux
 playwright install
 sudo playwright install-deps
 
-## MacOS
+## 🍎 MacOS
 playwright install
 playwright install-deps
 ```
