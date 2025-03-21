@@ -376,90 +376,196 @@ TARGET_PAGE_SELECTOR=#page
 ## 🚀 Executando a Aplicação
 
 ### 🎮 Modo de Desenvolvimento
+
+#### ⊞ Windows (CMD)
 ```bash
-# Windows (CMD)
+# Ativar ambiente virtual
 .venv\Scripts\activate.bat
+```
+```bash
+# Executar em modo debug
 python main.py --debug
+```
 
-# Windows (PowerShell)
+#### ⊞ Windows (PowerShell)
+```bash
+# Ativar ambiente virtual
 .venv\Scripts\Activate.ps1
+```
+```bash
+# Executar em modo debug
 python main.py --debug
+```
 
-# Linux
+#### 🐧 Linux
+```bash
+# Ativar ambiente virtual
 source .venv/bin/activate
+```
+```bash
+# Executar em modo debug
 python3 main.py --debug
+```
 
-# MacOS
+#### 🍎 MacOS
+```bash
+# Ativar ambiente virtual
 source .venv/bin/activate
+```
+```bash
+# Executar em modo debug
 python3 main.py --debug
 ```
 
 ### ⚡ Modo de Produção
+
+#### ⊞ Windows (CMD)
 ```bash
-# Windows (CMD/PowerShell)
+# Executar em background
 start /B python main.py > output.log 2>&1
+```
 
-# Linux
+#### ⊞ Windows (PowerShell)
+```bash
+# Executar em background
+Start-Process -NoNewWindow python -ArgumentList "main.py" -RedirectStandardOutput "output.log" -RedirectStandardError "error.log"
+```
+
+#### 🐧 Linux
+```bash
+# Executar em background
 nohup python3 main.py > output.log 2>&1 &
+```
 
-# MacOS
+#### 🍎 MacOS
+```bash
+# Executar em background
 nohup python3 main.py > output.log 2>&1 &
 ```
 
 ### 🔄 Atualização de Horários
+
+#### ⊞ Windows
 ```bash
 # Atualizar horários sem reiniciar
-python main.py --update-schedule config/new_schedule.json
+python main.py --update-schedule config\new_schedule.json
+```
+
+#### 🐧 Linux / 🍎 MacOS
+```bash
+# Atualizar horários sem reiniciar
+python3 main.py --update-schedule config/new_schedule.json
 ```
 
 ## 📊 Monitoramento e Logs
 
 ### 📈 Visualização de Logs
+
+#### ⊞ Windows (CMD)
 ```bash
-# Windows (CMD)
+# Ver conteúdo do arquivo de log
 type logs\automacao.log
+```
+```bash
+# Ver últimas 100 linhas
 powershell Get-Content -Tail 100 logs\automacao.log
+```
 
-# Windows (PowerShell)
+#### ⊞ Windows (PowerShell)
+```bash
+# Ver últimas 100 linhas
 Get-Content -Tail 100 logs\automacao.log
+```
+```bash
+# Monitorar em tempo real
 Get-Content -Wait logs\automacao.log
+```
 
-# Linux/MacOS
+#### 🐧 Linux
+```bash
+# Monitorar em tempo real
 tail -f logs/automacao.log
+```
+```bash
+# Ver últimas 100 linhas
+tail -n 100 logs/automacao.log
+```
+
+#### 🍎 MacOS
+```bash
+# Monitorar em tempo real
+tail -f logs/automacao.log
+```
+```bash
+# Ver últimas 100 linhas
 tail -n 100 logs/automacao.log
 ```
 
 ### 🔍 Depuração
+
+#### ⊞ Windows
 ```bash
-# Windows
+# Executar em modo verbose sem headless
 python main.py --verbose --no-headless
+```
 
-# Linux
+#### 🐧 Linux
+```bash
+# Executar em modo verbose sem headless
 python3 main.py --verbose --no-headless
+```
 
-# MacOS
+#### 🍎 MacOS
+```bash
+# Executar em modo verbose sem headless
 python3 main.py --verbose --no-headless
 ```
 
 ## 🚀 Deploy
 
 ### 📦 Deploy Local
+
+#### ⊞ Windows (PowerShell Admin)
 ```bash
-# Windows (PowerShell Admin)
+# Criar serviço do Windows
 New-Service -Name "NeuroWeaveTasker" -BinaryPathName "python main.py"
+```
+```bash
+# Iniciar serviço
 Start-Service NeuroWeaveTasker
+```
 
-# Windows (Task Scheduler)
+#### ⊞ Windows (Task Scheduler)
+```bash
+# Criar tarefa agendada
 schtasks /create /tn "NeuroWeaveTasker" /tr "python %CD%\main.py" /sc onstart
+```
 
-# Linux (systemd)
+#### 🐧 Linux (systemd)
+```bash
+# Copiar arquivo de serviço
 sudo cp deploy/neuroweave.service /etc/systemd/system/
+```
+```bash
+# Habilitar serviço
 sudo systemctl enable neuroweave
+```
+```bash
+# Iniciar serviço
 sudo systemctl start neuroweave
+```
 
-# MacOS (launchd)
+#### 🍎 MacOS (launchd)
+```bash
+# Copiar arquivo plist
 cp deploy/com.neuroweave.tasker.plist ~/Library/LaunchAgents/
+```
+```bash
+# Carregar serviço
 launchctl load ~/Library/LaunchAgents/com.neuroweave.tasker.plist
+```
+```bash
+# Iniciar serviço
 launchctl start com.neuroweave.tasker
 ```
 
@@ -517,32 +623,66 @@ docker run -d \
 ## 🔧 Manutenção
 
 ### 🔄 Atualização
+
+#### ⊞ Windows (CMD/PowerShell)
 ```bash
-# Windows (CMD/PowerShell)
+# Atualizar código
 git pull origin main
+```
+```bash
+# Atualizar dependências
 pip install -r requirements.txt --upgrade
+```
+```bash
+# Reiniciar serviço
 Restart-Service NeuroWeaveTasker
+```
 
-# Linux
+#### 🐧 Linux
+```bash
+# Atualizar código
 git pull origin main
+```
+```bash
+# Atualizar dependências
 pip install -r requirements.txt --upgrade
+```
+```bash
+# Reiniciar serviço
 sudo systemctl restart neuroweave
+```
 
-# MacOS
+#### 🍎 MacOS
+```bash
+# Atualizar código
 git pull origin main
+```
+```bash
+# Atualizar dependências
 pip install -r requirements.txt --upgrade
+```
+```bash
+# Reiniciar serviço
 launchctl restart com.neuroweave.tasker
 ```
 
 ### 🧹 Limpeza
+
+#### ⊞ Windows (CMD)
 ```bash
-# Windows (CMD)
+# Limpar logs antigos (mais de 30 dias)
 forfiles /p "logs" /s /m *.log /d -30 /c "cmd /c del @path"
+```
 
-# Windows (PowerShell)
+#### ⊞ Windows (PowerShell)
+```bash
+# Limpar logs antigos (mais de 30 dias)
 Get-ChildItem -Path logs -Filter *.log | Where-Object { $_.LastWriteTime -lt (Get-Date).AddDays(-30) } | Remove-Item
+```
 
-# Linux/MacOS
+#### 🐧 Linux / 🍎 MacOS
+```bash
+# Limpar logs antigos (mais de 30 dias)
 find logs/ -name "*.log" -mtime +30 -delete
 ```
 
