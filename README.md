@@ -29,62 +29,88 @@ git clone https://github.com/jcjesus/NeuroWeaveTaskerBot.git
 # Via SSH
 git clone git@github.com:jcjesus/NeuroWeaveTaskerBot.git
 
+# Entrar no diretório
+## Windows (CMD/PowerShell)
+cd NeuroWeaveTaskerBot
+
+## Linux/MacOS
 cd NeuroWeaveTaskerBot
 ```
 
 2. **Configure o Ambiente Virtual**
 ```bash
-# Windows
+# Windows (CMD)
 python -m venv .venv
-.venv\Scripts\activate
+.venv\Scripts\activate.bat
 
-# Linux/Mac
+# Windows (PowerShell)
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+
+# Linux
+python3 -m venv .venv
+source .venv/bin/activate
+
+# MacOS
 python3 -m venv .venv
 source .venv/bin/activate
 ```
 
 3. **Instale as Dependências**
 ```bash
-# Atualizar pip
+# Windows/Linux/MacOS
 python -m pip install --upgrade pip
-
-# Instalar dependências
 pip install -r requirements.txt
 
 # Instalar navegadores para o Playwright
+## Windows/Linux/MacOS
 playwright install
 ```
 
 4. **Configure as Variáveis de Ambiente**
 ```bash
-# Copiar arquivo de exemplo
-cp .env.example .env
-
-# Editar arquivo com suas configurações
-# Windows
+# Windows (CMD)
+copy .env.example .env
 notepad .env
 
-# Linux/Mac
+# Windows (PowerShell)
+Copy-Item .env.example .env
+notepad .env
+
+# Linux
+cp .env.example .env
 nano .env
+# ou
+vim .env
+
+# MacOS
+cp .env.example .env
+nano .env
+# ou
+open -a TextEdit .env
 ```
 
 ### 🔧 Configuração da Aplicação
 
 1. **Configuração dos Horários**
 ```bash
-# Criar arquivo de configuração de horários
-cp config/schedule.example.json config/schedule.json
+# Windows (CMD)
+copy config\schedule.example.json config\schedule.json
+notepad config\schedule.json
 
-# Editar horários conforme necessidade
-# Exemplo de schedule.json:
-{
-    "schedule": [
-        {"hour": "08", "minute": "00"},
-        {"hour": "12", "minute": "30"},
-        {"hour": "15", "minute": "45"},
-        {"hour": "19", "minute": "15"}
-    ]
-}
+# Windows (PowerShell)
+Copy-Item config\schedule.example.json config\schedule.json
+notepad config\schedule.json
+
+# Linux
+cp config/schedule.example.json config/schedule.json
+nano config/schedule.json
+
+# MacOS
+cp config/schedule.example.json config/schedule.json
+nano config/schedule.json
+# ou
+open -a TextEdit config/schedule.json
 ```
 
 2. **Configuração dos Seletores**
@@ -102,24 +128,33 @@ TARGET_PAGE_SELECTOR=#page
 
 ### 🎮 Modo de Desenvolvimento
 ```bash
-# Ativar ambiente virtual (se ainda não estiver ativo)
-source .venv/bin/activate  # Linux/Mac
-.venv\Scripts\activate     # Windows
-
-# Executar em modo debug
+# Windows (CMD)
+.venv\Scripts\activate.bat
 python main.py --debug
 
-# Executar com configuração específica
-python main.py --config config/custom_schedule.json
+# Windows (PowerShell)
+.venv\Scripts\Activate.ps1
+python main.py --debug
+
+# Linux
+source .venv/bin/activate
+python3 main.py --debug
+
+# MacOS
+source .venv/bin/activate
+python3 main.py --debug
 ```
 
 ### ⚡ Modo de Produção
 ```bash
-# Executar em background
-nohup python main.py > output.log 2>&1 &
+# Windows (CMD/PowerShell)
+start /B python main.py > output.log 2>&1
 
-# Ou usando o supervisor (recomendado)
-supervisord -c supervisor.conf
+# Linux
+nohup python3 main.py > output.log 2>&1 &
+
+# MacOS
+nohup python3 main.py > output.log 2>&1 &
 ```
 
 ### 🔄 Atualização de Horários
@@ -132,34 +167,51 @@ python main.py --update-schedule config/new_schedule.json
 
 ### 📈 Visualização de Logs
 ```bash
-# Ver logs em tempo real
-tail -f logs/automacao.log
+# Windows (CMD)
+type logs\automacao.log
+powershell Get-Content -Tail 100 logs\automacao.log
 
-# Ver últimos 100 logs
+# Windows (PowerShell)
+Get-Content -Tail 100 logs\automacao.log
+Get-Content -Wait logs\automacao.log
+
+# Linux/MacOS
+tail -f logs/automacao.log
 tail -n 100 logs/automacao.log
 ```
 
 ### 🔍 Depuração
 ```bash
-# Executar em modo verbose
-python main.py --verbose
+# Windows
+python main.py --verbose --no-headless
 
-# Executar com navegador visível
-python main.py --no-headless
+# Linux
+python3 main.py --verbose --no-headless
+
+# MacOS
+python3 main.py --verbose --no-headless
 ```
 
 ## 🚀 Deploy
 
 ### 📦 Deploy Local
-1. **Configurar Serviço do Sistema**
 ```bash
 # Windows (PowerShell Admin)
 New-Service -Name "NeuroWeaveTasker" -BinaryPathName "python main.py"
+Start-Service NeuroWeaveTasker
+
+# Windows (Task Scheduler)
+schtasks /create /tn "NeuroWeaveTasker" /tr "python %CD%\main.py" /sc onstart
 
 # Linux (systemd)
 sudo cp deploy/neuroweave.service /etc/systemd/system/
 sudo systemctl enable neuroweave
 sudo systemctl start neuroweave
+
+# MacOS (launchd)
+cp deploy/com.neuroweave.tasker.plist ~/Library/LaunchAgents/
+launchctl load ~/Library/LaunchAgents/com.neuroweave.tasker.plist
+launchctl start com.neuroweave.tasker
 ```
 
 ### ☁️ Deploy em Servidor
@@ -217,24 +269,32 @@ docker run -d \
 
 ### 🔄 Atualização
 ```bash
-# Atualizar código
+# Windows (CMD/PowerShell)
 git pull origin main
-
-# Atualizar dependências
 pip install -r requirements.txt --upgrade
+Restart-Service NeuroWeaveTasker
 
-# Reiniciar serviço
-sudo systemctl restart neuroweave  # Linux
-Restart-Service NeuroWeaveTasker   # Windows
+# Linux
+git pull origin main
+pip install -r requirements.txt --upgrade
+sudo systemctl restart neuroweave
+
+# MacOS
+git pull origin main
+pip install -r requirements.txt --upgrade
+launchctl restart com.neuroweave.tasker
 ```
 
 ### 🧹 Limpeza
 ```bash
-# Limpar logs antigos
-find logs/ -name "*.log" -mtime +30 -delete
+# Windows (CMD)
+forfiles /p "logs" /s /m *.log /d -30 /c "cmd /c del @path"
 
-# Limpar cache
-python clean.py
+# Windows (PowerShell)
+Get-ChildItem -Path logs -Filter *.log | Where-Object { $_.LastWriteTime -lt (Get-Date).AddDays(-30) } | Remove-Item
+
+# Linux/MacOS
+find logs/ -name "*.log" -mtime +30 -delete
 ```
 
 ## 🤝 Contribuição
