@@ -572,6 +572,8 @@ launchctl start com.neuroweave.tasker
 ### 🐳 Deploy com Docker
 
 #### ⊞ Windows
+
+##### Opção 1: Docker Desktop
 1. **Instalar Docker Desktop**
 ```bash
 # Download Docker Desktop do site oficial
@@ -611,6 +613,124 @@ docker run -d ^
   --name neuroweave ^
   -v %cd%/config:/app/config ^
   -v %cd%/logs:/app/logs ^
+  neuroweave
+```
+
+##### Opção 2: Docker com WSL2
+
+1. **Requisitos Mínimos WSL2**
+- Windows 10 Home ou Pro versão 2004 (Build 19041) ou superior
+- Windows 11
+- Processador com suporte para virtualização habilitada na BIOS
+
+2. **Instalar WSL2**
+```bash
+# Habilitar WSL e Virtual Machine Platform
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+```
+```bash
+# Habilitar Virtual Machine Platform
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+```
+```bash
+# Baixar e instalar o Kernel do Linux para WSL2
+# Download: https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi
+```
+```bash
+# Definir WSL2 como versão padrão
+wsl --set-default-version 2
+```
+
+3. **Instalar Ubuntu no WSL2**
+```bash
+# Instalar Ubuntu via Microsoft Store
+# Ou via comando:
+wsl --install -d Ubuntu
+```
+
+4. **Instalar Docker Engine no Ubuntu WSL2**
+```bash
+# Atualizar pacotes
+sudo apt update
+```
+```bash
+# Instalar dependências
+sudo apt install -y \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+```
+```bash
+# Adicionar chave GPG oficial do Docker
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+```
+```bash
+# Adicionar repositório
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+```
+```bash
+# Instalar Docker Engine
+sudo apt update
+sudo apt install -y docker-ce docker-ce-cli containerd.io
+```
+```bash
+# Adicionar usuário ao grupo docker
+sudo usermod -aG docker $USER
+```
+
+5. **Configurar Inicialização Automática**
+```bash
+# Editar arquivo wsl.conf
+sudo tee /etc/wsl.conf <<EOF
+[boot]
+command = service docker start
+EOF
+```
+
+6. **Otimizações (Opcional)**
+```bash
+# Criar/editar arquivo .wslconfig no Windows
+# Em %UserProfile%\.wslconfig
+[wsl2]
+memory=8GB
+processors=4
+networkingMode=mirrored
+
+[experimental]
+autoMemoryReclaim=gradual
+```
+
+7. **Verificar Instalação**
+```bash
+# Reiniciar WSL
+wsl --shutdown
+```
+```bash
+# Verificar versão do Docker
+docker --version
+```
+```bash
+# Testar Docker
+docker run hello-world
+```
+
+8. **Construir e Executar no WSL2**
+```bash
+# Navegar até o diretório do projeto
+cd NeuroWeaveTaskerBot
+```
+```bash
+# Construir imagem
+docker build -t neuroweave .
+```
+```bash
+# Executar container
+docker run -d \
+  --name neuroweave \
+  -v $(pwd)/config:/app/config \
+  -v $(pwd)/logs:/app/logs \
   neuroweave
 ```
 
@@ -711,110 +831,4 @@ docker run -d \
 ```
 
 #### 🛠️ Comandos Docker Úteis (Todos os SOs)
-```bash
-# Verificar status do container
-docker ps -a
 ```
-```bash
-# Ver logs do container
-docker logs neuroweave
-```
-```bash
-# Parar container
-docker stop neuroweave
-```
-```bash
-# Iniciar container
-docker start neuroweave
-```
-```bash
-# Remover container
-docker rm neuroweave
-```
-```bash
-# Remover imagem
-docker rmi neuroweave
-```
-
-## 🔧 Manutenção
-
-### 🔄 Atualização
-
-#### ⊞ Windows (CMD/PowerShell)
-```bash
-# Atualizar código
-git pull origin main
-```
-```bash
-# Atualizar dependências
-pip install -r requirements.txt --upgrade
-```
-```bash
-# Reiniciar serviço
-Restart-Service NeuroWeaveTasker
-```
-
-#### 🐧 Linux
-```bash
-# Atualizar código
-git pull origin main
-```
-```bash
-# Atualizar dependências
-pip install -r requirements.txt --upgrade
-```
-```bash
-# Reiniciar serviço
-sudo systemctl restart neuroweave
-```
-
-#### 🍎 MacOS
-```bash
-# Atualizar código
-git pull origin main
-```
-```bash
-# Atualizar dependências
-pip install -r requirements.txt --upgrade
-```
-```bash
-# Reiniciar serviço
-launchctl restart com.neuroweave.tasker
-```
-
-### 🧹 Limpeza
-
-#### ⊞ Windows (CMD)
-```bash
-# Limpar logs antigos (mais de 30 dias)
-forfiles /p "logs" /s /m *.log /d -30 /c "cmd /c del @path"
-```
-
-#### ⊞ Windows (PowerShell)
-```bash
-# Limpar logs antigos (mais de 30 dias)
-Get-ChildItem -Path logs -Filter *.log | Where-Object { $_.LastWriteTime -lt (Get-Date).AddDays(-30) } | Remove-Item
-```
-
-#### 🐧 Linux / 🍎 MacOS
-```bash
-# Limpar logs antigos (mais de 30 dias)
-find logs/ -name "*.log" -mtime +30 -delete
-```
-
-## 🤝 Contribuição
-1. 🍴 Fork o projeto
-2. 🔄 Crie sua Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. 💾 Commit suas mudanças (`git commit -m 'Add: nova feature'`)
-4. 📤 Push para a Branch (`git push origin feature/AmazingFeature`)
-5. 🔍 Abra um Pull Request
-
-## 📞 Suporte
-
-### 🆘 Precisa de Ajuda?
-- 📧 Email: mainjesus@gmail.com
-- 💬 Issues: [GitHub Issues](https://github.com/jcjesus/NeuroWeaveTaskerBot/issues)
-- 📚 Wiki: [Documentação](https://github.com/jcjesus/NeuroWeaveTaskerBot/wiki)
-
-## 📄 Licença
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
