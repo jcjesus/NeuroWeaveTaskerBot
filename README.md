@@ -317,23 +317,48 @@ open -a TextEdit .env
 ### 🔧 Configuração da Aplicação
 
 1. **Configuração dos Horários**
+
+#### ⊞ Windows (CMD)
 ```bash
-# Windows (CMD)
+# Copiar arquivo de exemplo
 copy config\schedule.example.json config\schedule.json
+```
+```bash
+# Editar arquivo
 notepad config\schedule.json
+```
 
-# Windows (PowerShell)
+#### ⊞ Windows (PowerShell)
+```bash
+# Copiar arquivo de exemplo
 Copy-Item config\schedule.example.json config\schedule.json
+```
+```bash
+# Editar arquivo
 notepad config\schedule.json
+```
 
-# Linux
+#### 🐧 Linux
+```bash
+# Copiar arquivo de exemplo
 cp config/schedule.example.json config/schedule.json
+```
+```bash
+# Editar arquivo
 nano config/schedule.json
+```
 
-# MacOS
+#### 🍎 MacOS
+```bash
+# Copiar arquivo de exemplo
 cp config/schedule.example.json config/schedule.json
+```
+```bash
+# Editar com nano
 nano config/schedule.json
-# ou
+```
+```bash
+# Ou editar com TextEdit
 open -a TextEdit config/schedule.json
 ```
 
