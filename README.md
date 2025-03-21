@@ -616,7 +616,9 @@ docker run -d ^
   neuroweave
 ```
 
-##### Opção 2: Docker com WSL2
+##### Opção 2: Docker com WSL2 ⚠️
+
+> ⚠️ **Recomendação de Performance**: Esta é a opção mais eficiente para Windows em termos de consumo de memória e processamento. O Docker Desktop (Opção 1) pode consumir significativamente mais recursos do sistema devido à sua interface gráfica e serviços adicionais, enquanto o WSL2 oferece performance nativa similar ao Linux.
 
 1. **Requisitos Mínimos WSL2**
 - Windows 10 Home ou Pro versão 2004 (Build 19041) ou superior
