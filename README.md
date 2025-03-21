@@ -837,51 +837,81 @@ docker run -d \
 ```
 
 #### 🛠️ Comandos Docker Úteis (Todos os SOs)
+
+**Listar containers em execução:**
 ```bash
-# Listar containers em execução
 docker ps
+```
 
-# Listar todos os containers (incluindo parados)
+**Listar todos os containers (incluindo parados):**
+```bash
 docker ps -a
+```
 
-# Parar container
+**Parar container:**
+```bash
 docker stop neuroweave
+```
 
-# Iniciar container
+**Iniciar container:**
+```bash
 docker start neuroweave
+```
 
-# Ver logs do container
+**Ver logs do container:**
+```bash
 docker logs neuroweave
+```
 
-# Ver logs em tempo real
+**Ver logs em tempo real:**
+```bash
 docker logs -f neuroweave
+```
 
-# Remover container
+**Remover container:**
+```bash
 docker rm neuroweave
+```
 
-# Listar imagens
+**Listar imagens:**
+```bash
 docker images
+```
 
-# Remover imagem
+**Remover imagem:**
+```bash
 docker rmi neuroweave
+```
 
-# Verificar uso de recursos
+**Verificar uso de recursos:**
+```bash
 docker stats
+```
 
-# Executar comando dentro do container
+**Executar comando dentro do container:**
+```bash
 docker exec -it neuroweave bash
+```
 
-# Atualizar container com nova imagem
+**Atualizar container com nova imagem:**
+```bash
 docker pull neuroweave:latest
 docker stop neuroweave
 docker rm neuroweave
 docker run -d --name neuroweave -v $(pwd)/config:/app/config -v $(pwd)/logs:/app/logs neuroweave
+```
 
-# Limpar recursos não utilizados
-docker system prune -a  # Remove containers parados, redes não utilizadas, imagens e cache
+**Limpar recursos não utilizados (containers parados, redes não utilizadas, imagens e cache):**
+```bash
+docker system prune -a
+```
 
-# Verificar informações do sistema Docker
+**Verificar informações do sistema Docker:**
+```bash
 docker info
+```
 
-# Verificar versão do Docker
+**Verificar versão do Docker:**
+```bash
 docker version
+```
