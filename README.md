@@ -812,7 +812,7 @@ find logs/ -name "*.log" -mtime +30 -delete
 ## 📞 Suporte
 
 ### 🆘 Precisa de Ajuda?
-- 📧 Email: suporte@exemplo.com
+- 📧 Email: mainjesus@gmail.com
 - 💬 Issues: [GitHub Issues](https://github.com/jcjesus/NeuroWeaveTaskerBot/issues)
 - 📚 Wiki: [Documentação](https://github.com/jcjesus/NeuroWeaveTaskerBot/wiki)
 
