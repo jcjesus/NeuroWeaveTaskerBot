@@ -265,25 +265,52 @@ playwright install-deps
   2. Adicione o interpretador do ambiente virtual (.venv)
 
 5. **Configure as Variáveis de Ambiente**
+
+#### ⊞ Windows (CMD)
 ```bash
-# Windows (CMD)
+# Copiar arquivo de exemplo
 copy .env.example .env
+```
+```bash
+# Editar arquivo
 notepad .env
+```
 
-# Windows (PowerShell)
+#### ⊞ Windows (PowerShell)
+```bash
+# Copiar arquivo de exemplo
 Copy-Item .env.example .env
+```
+```bash
+# Editar arquivo
 notepad .env
+```
 
-# Linux
+#### 🐧 Linux
+```bash
+# Copiar arquivo de exemplo
 cp .env.example .env
+```
+```bash
+# Editar com nano
 nano .env
-# ou
+```
+```bash
+# Ou editar com vim
 vim .env
+```
 
-# MacOS
+#### 🍎 MacOS
+```bash
+# Copiar arquivo de exemplo
 cp .env.example .env
+```
+```bash
+# Editar com nano
 nano .env
-# ou
+```
+```bash
+# Ou editar com TextEdit
 open -a TextEdit .env
 ```
 
