@@ -1,0 +1,134 @@
+# Ambientes virtuais
+venv/
+env/
+ENV/
+.env
+.venv
+.python-version
+
+# Arquivos Python
+*.py[cod]
+__pycache__/
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Arquivos de IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.settings/
+.project
+.pydevproject
+.vs/
+
+# Arquivos de log e dados
+logs/
+*.log
+log.txt
+*.csv
+*.dat
+*.out
+*.pid
+*.seed
+*.pid.lock
+
+# Arquivos de teste e cobertura
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+pytest-report.html
+.testmondata
+
+# Arquivos de ambiente e configuração
+.env
+.env.local
+.env.*.local
+config/schedule.json
+config/*.local.json
+
+# Arquivos específicos do Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/playwright/.cache/
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Arquivos temporários
+*.tmp
+*.temp
+*.bak
+*.swp
+*~.nib
+*.backup
+
+# Arquivos de documentação gerados
+docs/_build/
+site/
+
+# Arquivos de dependências
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Arquivos de distribuição
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# Arquivos de banco de dados
+*.sqlite
+*.sqlite3
+*.db
+
+# Arquivos de mídia e binários
+*.pdf
+*.zip
+*.tar.gz
+*.rar
+*.7z
+*.mp3
+*.mp4
+*.avi
+*.mov
+*.wmv
+*.flv
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.ico
+*.svg
+
+# Arquivos específicos do projeto
+automacao.log
+*.session
+*.session-journal 
