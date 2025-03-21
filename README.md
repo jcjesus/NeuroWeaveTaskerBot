@@ -107,57 +107,144 @@ git --version
 ### ⚙️ Configuração do Ambiente
 
 1. **Clone o Repositório**
+
+#### ⊞ Windows
 ```bash
-# ⊞ Windows / 🐧 Linux / 🍎 MacOS (HTTPS)
+# Via HTTPS
 git clone https://github.com/jcjesus/NeuroWeaveTaskerBot.git
-
-# ⊞ Windows / 🐧 Linux / 🍎 MacOS (SSH)
+```
+```bash
+# Via SSH
 git clone git@github.com:jcjesus/NeuroWeaveTaskerBot.git
-
+```
+```bash
 # Entrar no diretório
-## ⊞ Windows (CMD/PowerShell)
 cd NeuroWeaveTaskerBot
+```
 
-## 🐧 Linux / 🍎 MacOS
+#### 🐧 Linux
+```bash
+# Via HTTPS
+git clone https://github.com/jcjesus/NeuroWeaveTaskerBot.git
+```
+```bash
+# Via SSH
+git clone git@github.com:jcjesus/NeuroWeaveTaskerBot.git
+```
+```bash
+# Entrar no diretório
+cd NeuroWeaveTaskerBot
+```
+
+#### 🍎 MacOS
+```bash
+# Via HTTPS
+git clone https://github.com/jcjesus/NeuroWeaveTaskerBot.git
+```
+```bash
+# Via SSH
+git clone git@github.com:jcjesus/NeuroWeaveTaskerBot.git
+```
+```bash
+# Entrar no diretório
 cd NeuroWeaveTaskerBot
 ```
 
 2. **Configure o Ambiente Virtual**
+
+#### ⊞ Windows (CMD)
 ```bash
-# ⊞ Windows (CMD)
+# Criar ambiente virtual
 python -m venv .venv
+```
+```bash
+# Ativar ambiente virtual
 .venv\Scripts\activate.bat
+```
 
-# ⊞ Windows (PowerShell)
+#### ⊞ Windows (PowerShell)
+```bash
+# Criar ambiente virtual
 python -m venv .venv
+```
+```bash
+# Ativar ambiente virtual
 .venv\Scripts\Activate.ps1
+```
 
-# 🐧 Linux
+#### 🐧 Linux
+```bash
+# Criar ambiente virtual
 python3 -m venv .venv
+```
+```bash
+# Ativar ambiente virtual
 source .venv/bin/activate
+```
 
-# 🍎 MacOS
+#### 🍎 MacOS
+```bash
+# Criar ambiente virtual
 python3 -m venv .venv
+```
+```bash
+# Ativar ambiente virtual
 source .venv/bin/activate
 ```
 
 3. **Instale as Dependências**
+
+#### ⊞ Windows
 ```bash
-# ⊞ Windows / 🐧 Linux / 🍎 MacOS
+# Atualizar pip
 python -m pip install --upgrade pip
+```
+```bash
+# Instalar dependências
 pip install -r requirements.txt
-
+```
+```bash
 # Instalar navegadores para o Playwright
-## ⊞ Windows
 playwright install
+```
+```bash
+# Instalar dependências do Playwright
 playwright install-deps
+```
 
-## 🐧 Linux
+#### 🐧 Linux
+```bash
+# Atualizar pip
+python -m pip install --upgrade pip
+```
+```bash
+# Instalar dependências
+pip install -r requirements.txt
+```
+```bash
+# Instalar navegadores para o Playwright
 playwright install
+```
+```bash
+# Instalar dependências do Playwright (requer sudo)
 sudo playwright install-deps
+```
 
-## 🍎 MacOS
+#### 🍎 MacOS
+```bash
+# Atualizar pip
+python -m pip install --upgrade pip
+```
+```bash
+# Instalar dependências
+pip install -r requirements.txt
+```
+```bash
+# Instalar navegadores para o Playwright
 playwright install
+```
+```bash
+# Instalar dependências do Playwright
 playwright install-deps
 ```
 
