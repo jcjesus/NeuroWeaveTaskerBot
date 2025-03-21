@@ -32,54 +32,75 @@ Bot de automação web inteligente desenvolvido para executar tarefas programada
 - 📦 Microsoft Visual C++ Build Tools ([Download](https://visualstudio.microsoft.com/visual-cpp-build-tools/))
 
 #### Linux (Ubuntu/Debian)
+1. **Atualizar Repositórios**
 ```bash
-# Atualizar repositórios
 sudo apt update
+```
 
-# Instalar Python
+2. **Instalar Python**
+```bash
 sudo apt install python3.8 python3.8-venv python3-pip
+```
 
-# Instalar Git
+3. **Instalar Git**
+```bash
 sudo apt install git
+```
 
-# Instalar dependências para o Playwright
-sudo apt install -y \
-    libwoff1 \
-    libopus0 \
-    libwebp6 \
-    libwebpdemux2 \
-    libenchant1c2a \
-    libgudev-1.0-0 \
-    libsecret-1-0 \
-    libhyphen0 \
-    libgdk-pixbuf2.0-0 \
-    libegl1 \
-    libnotify4 \
-    libxslt1.1 \
-    libevent-2.1-7 \
-    libgles2 \
-    libvpx6
+4. **Instalar Dependências para o Playwright**
+```bash
+sudo apt install -y libwoff1
+sudo apt install -y libopus0
+sudo apt install -y libwebp6
+sudo apt install -y libwebpdemux2
+sudo apt install -y libenchant1c2a
+sudo apt install -y libgudev-1.0-0
+sudo apt install -y libsecret-1-0
+sudo apt install -y libhyphen0
+sudo apt install -y libgdk-pixbuf2.0-0
+sudo apt install -y libegl1
+sudo apt install -y libnotify4
+sudo apt install -y libxslt1.1
+sudo apt install -y libevent-2.1-7
+sudo apt install -y libgles2
+sudo apt install -y libvpx6
+```
 
-# Verificar instalações
+5. **Verificar Instalações**
+```bash
 python3 --version
+```
+```bash
 pip3 --version
+```
+```bash
 git --version
 ```
 
 #### MacOS
+1. **Instalar Homebrew**
 ```bash
-# Instalar Homebrew (se não estiver instalado)
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
 
-# Instalar Python
+2. **Instalar Python**
+```bash
 brew install python@3.8
+```
 
-# Instalar Git
+3. **Instalar Git**
+```bash
 brew install git
+```
 
-# Verificar instalações
+4. **Verificar Instalações**
+```bash
 python3 --version
+```
+```bash
 pip3 --version
+```
+```bash
 git --version
 ```
 
