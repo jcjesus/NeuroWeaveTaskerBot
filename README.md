@@ -569,55 +569,171 @@ launchctl load ~/Library/LaunchAgents/com.neuroweave.tasker.plist
 launchctl start com.neuroweave.tasker
 ```
 
-### ☁️ Deploy em Servidor
-1. **Preparar Ambiente**
-```bash
-# Instalar dependências do sistema
-sudo apt-get update
-sudo apt-get install python3-venv supervisor
-
-# Clonar repositório
-git clone https://github.com/jcjesus/NeuroWeaveTaskerBot.git
-cd NeuroWeaveTaskerBot
-
-# Configurar ambiente
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-```
-
-2. **Configurar Supervisor**
-```ini
-[program:neuroweave]
-command=/path/to/.venv/bin/python main.py
-directory=/path/to/NeuroWeaveTaskerBot
-user=www-data
-autostart=true
-autorestart=true
-stderr_logfile=/var/log/neuroweave.err.log
-stdout_logfile=/var/log/neuroweave.out.log
-```
-
-3. **Iniciar Serviço**
-```bash
-sudo supervisorctl reread
-sudo supervisorctl update
-sudo supervisorctl start neuroweave
-```
-
 ### 🐳 Deploy com Docker
-1. **Construir Imagem**
+
+#### ⊞ Windows
+1. **Instalar Docker Desktop**
 ```bash
+# Download Docker Desktop do site oficial
+# https://www.docker.com/products/docker-desktop
+```
+```bash
+# Verificar instalação
+docker --version
+```
+```bash
+# Iniciar Docker Desktop
+# Aguarde o ícone do Docker ficar verde na barra de tarefas
+```
+
+2. **Construir Imagem**
+```bash
+# Navegar até o diretório do projeto
+cd NeuroWeaveTaskerBot
+```
+```bash
+# Construir imagem
 docker build -t neuroweave .
 ```
 
-2. **Executar Container**
+3. **Executar Container**
 ```bash
+# PowerShell
+docker run -d `
+  --name neuroweave `
+  -v ${PWD}/config:/app/config `
+  -v ${PWD}/logs:/app/logs `
+  neuroweave
+```
+```bash
+# CMD
+docker run -d ^
+  --name neuroweave ^
+  -v %cd%/config:/app/config ^
+  -v %cd%/logs:/app/logs ^
+  neuroweave
+```
+
+#### 🐧 Linux
+1. **Instalar Docker**
+```bash
+# Atualizar pacotes
+sudo apt update
+```
+```bash
+# Instalar dependências
+sudo apt install -y \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+```
+```bash
+# Adicionar chave GPG oficial do Docker
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+```
+```bash
+# Adicionar repositório
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+```
+```bash
+# Instalar Docker Engine
+sudo apt update
+sudo apt install -y docker-ce docker-ce-cli containerd.io
+```
+```bash
+# Adicionar usuário ao grupo docker
+sudo usermod -aG docker $USER
+```
+```bash
+# Verificar instalação
+docker --version
+```
+
+2. **Construir Imagem**
+```bash
+# Navegar até o diretório do projeto
+cd NeuroWeaveTaskerBot
+```
+```bash
+# Construir imagem
+docker build -t neuroweave .
+```
+
+3. **Executar Container**
+```bash
+# Executar com volumes
 docker run -d \
   --name neuroweave \
   -v $(pwd)/config:/app/config \
   -v $(pwd)/logs:/app/logs \
   neuroweave
+```
+
+#### 🍎 MacOS
+1. **Instalar Docker Desktop**
+```bash
+# Instalar Homebrew (se ainda não tiver)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+```bash
+# Instalar Docker Desktop
+brew install --cask docker
+```
+```bash
+# Verificar instalação
+docker --version
+```
+```bash
+# Iniciar Docker Desktop
+open /Applications/Docker.app
+```
+
+2. **Construir Imagem**
+```bash
+# Navegar até o diretório do projeto
+cd NeuroWeaveTaskerBot
+```
+```bash
+# Construir imagem
+docker build -t neuroweave .
+```
+
+3. **Executar Container**
+```bash
+# Executar com volumes
+docker run -d \
+  --name neuroweave \
+  -v $(pwd)/config:/app/config \
+  -v $(pwd)/logs:/app/logs \
+  neuroweave
+```
+
+#### 🛠️ Comandos Docker Úteis (Todos os SOs)
+```bash
+# Verificar status do container
+docker ps -a
+```
+```bash
+# Ver logs do container
+docker logs neuroweave
+```
+```bash
+# Parar container
+docker stop neuroweave
+```
+```bash
+# Iniciar container
+docker start neuroweave
+```
+```bash
+# Remover container
+docker rm neuroweave
+```
+```bash
+# Remover imagem
+docker rmi neuroweave
 ```
 
 ## 🔧 Manutenção
